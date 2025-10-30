@@ -206,14 +206,14 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <Link
-                href="/checkout"
+              <a
+                href="#precio"
                 className="rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-lg px-8 py-4 inline-flex items-center justify-center"
               >
                 <Euro className="w-5 h-5 mr-2" />
                 Accede a Pau.la por 10€
                 <ArrowRight className="w-5 h-5 ml-2" />
-              </Link>
+              </a>
               <a
                 href="#como"
                 className="rounded-lg border border-purple-500/50 text-purple-300 hover:bg-purple-500/10 text-lg px-8 py-4 inline-flex items-center justify-center"
@@ -590,14 +590,14 @@ export default function Home() {
               <p className="text-lg text-purple-200 mb-8">
                 Ahorra miles en academias • Estudia 70% menos • Mejora tu nota
               </p>
-              <Link
-                href="/checkout"
+              <a
+                href="#"
                 className="rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-xl px-12 py-4 inline-flex items-center justify-center"
               >
                 <Euro className="w-6 h-6 mr-2" />
                 Accede a Pau.la por 10€
                 <Sparkles className="w-6 h-6 ml-3" />
-              </Link>
+              </a>
               <p className="text-sm text-purple-300 mt-6">
                 Pago único • Acceso inmediato • Garantía de 7 días
               </p>

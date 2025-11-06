@@ -164,7 +164,7 @@ export default function Home() {
               </span>
             </div>
             
-  <Link href="/checkout" className="rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-lg px-8 py-4 inline-flex items-center justify-center">
+  <Link href="/checkout" className="rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-sm sm:text-base md:text-lg px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-3.5 inline-flex items-center justify-center leading-none">
   <Euro className="w-5 h-5 mr-2" />
   Accede a Pau.la por 10€
   <ArrowRight className="w-5 h-5 ml-2" />
@@ -208,7 +208,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Link
                 href="/checkout"
-                className="rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-lg px-8 py-4 inline-flex items-center justify-center"
+                className="rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-base sm:text-lg md:text-xl px-5 py-3 sm:px-6 sm:py-3.5 md:px-8 md:py-4 inline-flex items-center justify-center leading-none"
               >
                 <Euro className="w-5 h-5 mr-2" />
                 Accede a Pau.la por 10€
@@ -592,7 +592,7 @@ export default function Home() {
               </p>
               <Link
                 href="/checkout"
-                className="rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-xl px-12 py-4 inline-flex items-center justify-center"
+                className="rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-base sm:text-lg md:text-xl px-6 py-3 sm:px-8 sm:py-3.5 md:px-12 md:py-4 inline-flex items-center justify-center leading-none"
               >
                 <Euro className="w-6 h-6 mr-2" />
                 Accede a Pau.la por 10€

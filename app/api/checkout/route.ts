@@ -5,12 +5,6 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic"; // evita caché de rutas
 
 const stripeSecret = process.env.STRIPE_SECRET_KEY;
-if (!stripeSecret) {
-  // Lanzamos en import-time para verlo en logs si falta la ENV
-  throw new Error("STRIPE_SECRET_KEY no está definida en el entorno");
-}
-
-const stripe = new Stripe(stripeSecret, { apiVersion: "2024-06-20" });
 
 function getBaseUrl(req: Request) {
   if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL;
@@ -23,10 +17,19 @@ function getBaseUrl(req: Request) {
 export async function POST(req: Request) {
   const baseUrl = getBaseUrl(req);
 
+  if (!stripeSecret) {
+    console.error("Stripe checkout error: STRIPE_SECRET_KEY is missing in this environment");
+    return new Response(
+      JSON.stringify({ error: "missing_env", message: "STRIPE_SECRET_KEY no está definida" }),
+      { status: 500, headers: { "Content-Type": "application/json" } }
+    );
+  }
+
+  const stripe = new Stripe(stripeSecret);
+
   try {
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
-      payment_method_types: ["card"],
       line_items: [
         {
           price_data: {

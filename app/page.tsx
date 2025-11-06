@@ -164,11 +164,11 @@ export default function Home() {
               </span>
             </div>
             
-  <Link href="/checkout" className="rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-sm sm:text-base md:text-lg px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-3.5 inline-flex items-center justify-center leading-none">
-  <Euro className="w-5 h-5 mr-2" />
-  Accede a Pau.la por 10€
-  <ArrowRight className="w-5 h-5 ml-2" />
-</Link>
+  <Link href="/checkout" className="rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-sm sm:text-base md:text-base px-4 py-2 sm:px-5 sm:py-2.5 md:px-5 md:py-2.5 inline-flex items-center justify-center leading-none gap-2 whitespace-nowrap max-w-fit">
+    <Euro className="w-4 h-4" />
+    Pruébalo por 10€
+    <ArrowRight className="w-4 h-4" />
+  </Link>
           </div>
         </div>
       </nav>
@@ -208,11 +208,11 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Link
                 href="/checkout"
-                className="rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-base sm:text-lg md:text-xl px-5 py-3 sm:px-6 sm:py-3.5 md:px-8 md:py-4 inline-flex items-center justify-center leading-none"
+                className="rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-base sm:text-base md:text-lg px-5 py-2.5 sm:px-5 sm:py-2.5 md:px-6 md:py-3 inline-flex items-center justify-center leading-none gap-2 whitespace-nowrap max-w-fit"
               >
-                <Euro className="w-5 h-5 mr-2" />
-                Accede a Pau.la por 10€
-                <ArrowRight className="w-5 h-5 ml-2" />
+                <Euro className="w-5 h-5" />
+                Pruébalo por 10€
+                <ArrowRight className="w-5 h-5" />
               </Link>
               <a
                 href="#como"
@@ -592,11 +592,11 @@ export default function Home() {
               </p>
               <Link
                 href="/checkout"
-                className="rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-base sm:text-lg md:text-xl px-6 py-3 sm:px-8 sm:py-3.5 md:px-12 md:py-4 inline-flex items-center justify-center leading-none"
+                className="rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-base sm:text-base md:text-lg px-6 py-2.5 sm:px-7 sm:py-3 md:px-10 md:py-3 inline-flex items-center justify-center leading-none gap-2 whitespace-nowrap max-w-fit"
               >
-                <Euro className="w-6 h-6 mr-2" />
-                Accede a Pau.la por 10€
-                <Sparkles className="w-6 h-6 ml-3" />
+                <Euro className="w-5 h-5" />
+                Pruébalo por 10€
+                <Sparkles className="w-5 h-5" />
               </Link>
               <p className="text-sm text-purple-300 mt-6">
                 Pago único • Acceso inmediato • Garantía de 7 días

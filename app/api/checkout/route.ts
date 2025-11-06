@@ -1,10 +1,28 @@
+// app/api/checkout/route.ts
 import Stripe from "stripe";
-import { NextResponse } from "next/server";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-});
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic"; // evita caché de rutas
 
-export async function POST() {
+const stripeSecret = process.env.STRIPE_SECRET_KEY;
+if (!stripeSecret) {
+  // Lanzamos en import-time para verlo en logs si falta la ENV
+  throw new Error("STRIPE_SECRET_KEY no está definida en el entorno");
+}
+
+const stripe = new Stripe(stripeSecret, { apiVersion: "2024-06-20" });
+
+function getBaseUrl(req: Request) {
+  if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL;
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+  const origin = req.headers.get("origin");
+  if (origin && /^https?:\/\//i.test(origin)) return origin;
+  return "http://localhost:3000";
+}
+
+export async function POST(req: Request) {
+  const baseUrl = getBaseUrl(req);
+
   try {
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
@@ -13,22 +31,29 @@ export async function POST() {
         {
           price_data: {
             currency: "eur",
-            unit_amount: 1000, // 10€ (en céntimos)
-            product_data: {
-              name: "Acceso Pau.la (hasta julio)",
-              description: "Asistente IA para preparar la PAU",
-            },
+            unit_amount: 1000, // 10€ en céntimos
+            product_data: { name: "Acceso Pau.la — Pago único" },
           },
           quantity: 1,
         },
       ],
-      success_url: `${process.env.NEXT_PUBLIC_APP_URL}/success`,
-      cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/checkout`,
+      success_url: `${baseUrl}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${baseUrl}/checkout?canceled=1`,
     });
 
-    return NextResponse.json({ url: session.url });
-  } catch (error: any) {
-    console.error("Stripe error:", error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return Response.json({ url: session.url });
+  } catch (err: any) {
+    // Log detallado para Vercel
+    console.error("Stripe checkout error:", {
+      message: err?.message,
+      type: err?.type,
+      code: err?.code,
+      status: err?.statusCode,
+      raw: err?.raw,
+    });
+    return new Response(
+      JSON.stringify({ error: "checkout_failed", message: err?.message ?? "Unknown error" }),
+      { status: 500, headers: { "Content-Type": "application/json" } }
+    );
   }
 }
